@@ -63,3 +63,13 @@ export async function getGlobalPageData() {
 
   return fetchData(url.href);
 }
+
+export async function getGlobalPageMetadata() {
+  const url = new URL('/api/global', baseUrl);
+
+  url.search = qs.stringify({
+    fields: ['title', 'description'],
+  });
+
+  return fetchData(url.href);
+}
