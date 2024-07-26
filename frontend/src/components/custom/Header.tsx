@@ -3,6 +3,7 @@ import Logo from '@/components/custom/Logo';
 import { Button } from '@/components/ui/button';
 import { getUserMeLoader } from '@/data/services/get-user-me-loader';
 import { LogoutButton } from './LogoutButton';
+import { SummaryForm } from '../forms/SummaryForm';
 
 interface AuthUserProps {
   username: string;
@@ -50,6 +51,7 @@ export default async function Header({ data }: Readonly<HeaderProps>) {
   return (
     <div className="flex items-center justify-between px-4 py-3 bg-white shadow-md dark:bg-gray-800">
       <Logo text={logoText.text} />
+      {user.ok && <SummaryForm />}
       <div className="flex items-center gap-4">
         {user.ok ? (
           <LoggedInUser userData={user.data} />

@@ -4,6 +4,7 @@ import './globals.css';
 import { getGlobalPageData, getGlobalPageMetadata } from '@/data/loaders';
 import Header from '@/components/custom/Header';
 import { Footer } from '@/components/custom/Footer';
+import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Toaster position='bottom-center' />
         <Header data={globalData.header} />
         <div>{children}</div>
         <Footer data={globalData.footer} />
