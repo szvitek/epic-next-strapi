@@ -7,6 +7,7 @@ import { cn, extractYouTubeID } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import SubmitButton from '@/components/custom/SubmitButton';
 import { generateSummaryService } from '@/data/services/summary-service';
+import { createSummaryAction } from '@/data/actions/summary-actions';
 
 interface StrapiErrorsProps {
   message: string | null;
@@ -54,6 +55,27 @@ export function SummaryForm() {
       setError({
         ...INITIAL_STATE,
         message: summaryResponseData.error,
+        name: 'Summary Error',
+      });
+      setLoading(false);
+      return;
+    }
+
+    const payload = {
+      data: {
+        title: `Summary for video: ${processedVideoId}`,
+        videoId: processedVideoId,
+        summary: summaryResponseData.data,
+      },
+    };
+
+    try {
+      await createSummaryAction(payload);
+    } catch (error) {
+      toast.error('Failed to create summary');
+      setError({
+        ...INITIAL_STATE,
+        message: 'Failed to create summary',
         name: 'Summary Error',
       });
       setLoading(false);
