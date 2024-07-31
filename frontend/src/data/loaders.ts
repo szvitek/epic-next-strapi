@@ -71,7 +71,8 @@ export async function getGlobalPageMetadata() {
   return fetchData(url.href);
 }
 
-export async function getSummaries(queryString: string) {
+export async function getSummaries(queryString: string, currentPage: number) {
+  const PAGE_SIZE = 4; // can be read from env variable
   const query = qs.stringify({
     sort: ['createdAt:desc'],
     filters: {
@@ -79,6 +80,10 @@ export async function getSummaries(queryString: string) {
         { title: { $containsi: queryString } },
         { summary: { $containsi: queryString } },
       ],
+    },
+    pagination: {
+      pageSize: PAGE_SIZE,
+      page: currentPage,
     },
   });
 
