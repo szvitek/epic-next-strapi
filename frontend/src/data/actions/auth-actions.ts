@@ -25,7 +25,6 @@ const schemaRegister = z.object({
   }),
 });
 
-// todo: fix type
 export async function registerUserAction(prevState: any, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
   // const fields = {
@@ -123,7 +122,6 @@ export async function loginUserAction(prevState: any, formData: FormData) {
   }
 
   cookies().set('jwt', responseData.jwt, config);
-
   redirect('/dashboard');
 }
 

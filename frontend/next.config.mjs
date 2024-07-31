@@ -1,3 +1,5 @@
+//! todo: you need to add the backend host here after deployment
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {

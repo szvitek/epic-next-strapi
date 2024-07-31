@@ -32,8 +32,6 @@ export function SignupForm() {
     INITIAL_STATE
   );
 
-  console.log(formState);
-
   return (
     <div className="w-full max-w-md">
       <form action={formAction}>
@@ -78,7 +76,11 @@ export function SignupForm() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col">
-            <SubmitButton text="Sign Up" loadingText='Loading' className="w-full" />
+            <SubmitButton
+              text="Sign Up"
+              loadingText="Loading"
+              className="w-full"
+            />
             <StrapiErrors error={formState?.strapiErrors} />
           </CardFooter>
         </Card>

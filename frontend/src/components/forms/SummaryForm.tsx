@@ -47,7 +47,6 @@ export function SummaryForm() {
     toast.success('Generating Summary');
 
     const summaryResponseData = await generateSummaryService(videoId);
-    console.log(summaryResponseData, 'res from route handler');
 
     if (summaryResponseData.error) {
       setValue('');

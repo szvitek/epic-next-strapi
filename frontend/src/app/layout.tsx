@@ -23,11 +23,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const globalData = await getGlobalPageData();
-  console.log(globalData);
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Toaster position='bottom-center' />
+        <Toaster position="bottom-center" />
         <Header data={globalData.header} />
         <div>{children}</div>
         <Footer data={globalData.footer} />
